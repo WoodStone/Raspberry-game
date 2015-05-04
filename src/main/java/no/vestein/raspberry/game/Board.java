@@ -7,9 +7,10 @@ public class Board {
 	
 	private static Board instance = null;
 	
+	public final int height = 30;
+	public final int width = 60;
+	
 	private char[][] map;
-	private int height = 30;
-	private int length = 60;
 	private int playerx = 10;
 	private int playery = 10;
 	
@@ -23,9 +24,9 @@ public class Board {
 	}
 	
 	private Board() {
-		map = new char[height][length];
+		map = new char[height][width];
 		for (int i = 0; i < height; i++) {
-			for (int j = 0; j < length; j++) {
+			for (int j = 0; j < width; j++) {
 				map[i][j] = ' ';
 			}
 		}
@@ -33,15 +34,7 @@ public class Board {
 	}
 	
 	public void init() {
-		boardChanged();
-	}
-	
-	public int getHeight() {
-		return height;
-	}
-	
-	public int getLength() {
-		return length;
+		updateListeners();
 	}
 	
 	public char[][] getMap() {
@@ -49,15 +42,15 @@ public class Board {
 	}
 	
 	public void movePlayer(int dirx, int diry) {
-		if (playerx + dirx < 0 || playerx + dirx >= length || playery + diry < 0 || playery + diry >= height) return;
+		if (playerx + dirx < 0 || playerx + dirx >= width || playery + diry < 0 || playery + diry >= height) return;
 		map[playery][playerx] = ' ';
 		playerx += dirx;
 		playery += diry;
 		map[playery][playerx] =  '$';
-		boardChanged();
+		updateListeners();
 	}
 	
-	public void boardChanged() {
+	public void updateListeners() {
 		for (IBoardListener listener : listeners) {
 			listener.boardChanged();
 		}
