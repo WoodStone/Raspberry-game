@@ -20,22 +20,22 @@ public class Renderer implements IBoardListener {
 			System.out.println("");
 			System.out.println("Something went wrong.");
 		}
-		char[] line = new char[board.getLength()];
-		Arrays.fill(line, '-');
-		System.out.println(String.valueOf(line));
 		System.out.println(boardToString(board));
 	}
 	
 	private String boardToString(Board board) {
 		char[][] map = board.getMap();
 		String sBoard = "";
+		char[] line = new char[board.width + 2];
+		Arrays.fill(line, '-');
 		
-		for (int i = 0; i < board.getHeight(); i++) {
+		sBoard += String.valueOf(line);
+		for (int i = 0; i < board.height; i++) {
+			sBoard += "|";
 			sBoard += String.valueOf(map[i]);
+			sBoard += "|";
 			sBoard += "\n";
 		}
-		char[] line = new char[board.getLength()];
-		Arrays.fill(line, '-');
 		sBoard += String.valueOf(line);
 		
 		return sBoard;
