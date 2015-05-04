@@ -23,7 +23,6 @@ public class Button {
 	public Button(Pin pin, int dirx, int diry) {
 		this.dirx = dirx;
 		this.diry = diry;
-		listeners.add(Board.getInstance());
 		buttonPin = gpio.provisionDigitalInputPin(pin, PinPullResistance.PULL_DOWN);
 		
 		buttonPin.addListener(new GpioPinListenerDigital() {
@@ -37,4 +36,15 @@ public class Button {
 		});
 		
 	}
+	
+	public void addListener(IButtonListener listener) {
+		if (listeners.contains(listener)) return;
+		listeners.add(listener);
+	}
+	
+	public void removeListener(IButtonListener listener) {
+		if (listeners.contains(listener)) return;
+		listeners.remove(listener);
+	}
+	
 }

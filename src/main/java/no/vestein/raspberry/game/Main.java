@@ -1,6 +1,7 @@
 package no.vestein.raspberry.game;
 
-import com.pi4j.io.gpio.GpioController;
+import java.io.Console;
+
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.RaspiPin;
 
@@ -9,24 +10,33 @@ public class Main {
 	
 	
 	
-	public static Button up = new Button(RaspiPin.GPIO_00, 0, -1);
-	public static Button down = new Button(RaspiPin.GPIO_02, 0, 1);
-	public static Button right = new Button(RaspiPin.GPIO_03, 1, 0);
-	public static Button left = new Button(RaspiPin.GPIO_04, -1, 0);
-	
 	public static void main(String[] args) throws InterruptedException {
-		final GpioController gpio = GpioFactory.getInstance();
+		
+		Button up = new Button(RaspiPin.GPIO_00, 0, -1);
+		Button down = new Button(RaspiPin.GPIO_02, 0, 1);
+		Button right = new Button(RaspiPin.GPIO_03, 1, 0);
+		Button left = new Button(RaspiPin.GPIO_04, -1, 0);
 		
 		Board board = Board.getInstance();
-		board.printBoard();
+		Renderer renderer = new Renderer(board);
+		board.addListener(renderer);
+				
+		ButtonController buttonController = new ButtonController();
+		buttonController.addButtons(up, down, right, left);
 		
-		for (;;) {
-			Thread.sleep(10000);
+		board.init();
+		
+		while (true) {
+			Console console = System.console();
+			String[] input = console.readLine().split(" ");
+			
+			if (input[0].equals("")) {
+				break;
+			}
 		}
 		
-		//gpio.shutdown();
+		GpioFactory.getInstance().shutdown();
+		System.exit(0);
 	}
-	
-
 
 }
