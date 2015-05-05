@@ -62,7 +62,7 @@ public class Board {
 	}
 	
 	public void removeListener(IBoardListener listener) {
-		if (listeners.contains(listener)) return;
+		if (!listeners.contains(listener)) return;
 		listeners.remove(listener);
 	}
 

@@ -42,7 +42,7 @@ public class Button {
 	}
 	
 	public void removeListener(IButtonListener listener) {
-		if (listeners.contains(listener)) return;
+		if (!listeners.contains(listener)) return;
 		listeners.remove(listener);
 	}
 	
