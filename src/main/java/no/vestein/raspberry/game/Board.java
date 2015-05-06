@@ -11,8 +11,8 @@ public class Board {
 	public final int width = 60;
 	
 	private char[][] map;
-	private int playerx = 10;
-	private int playery = 10;
+	private int playerx = Util.randInt(width);
+	private int playery = Util.randInt(height);
 	
 	private List<BoardListener> listeners = new ArrayList<>();
 	
