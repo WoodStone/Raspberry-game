@@ -14,7 +14,7 @@ public class Board {
 	private int playerx = 10;
 	private int playery = 10;
 	
-	private List<IBoardListener> listeners = new ArrayList<>();
+	private List<BoardListener> listeners = new ArrayList<>();
 	
 	public static Board getInstance() {
 		if (instance == null) {
@@ -51,17 +51,17 @@ public class Board {
 	}
 	
 	public void updateListeners() {
-		for (IBoardListener listener : listeners) {
+		for (BoardListener listener : listeners) {
 			listener.boardChanged();
 		}
 	}
 	
-	public void addListener(IBoardListener listener) {
+	public void addListener(BoardListener listener) {
 		if (listeners.contains(listener)) return;
 		listeners.add(listener);
 	}
 	
-	public void removeListener(IBoardListener listener) {
+	public void removeListener(BoardListener listener) {
 		if (!listeners.contains(listener)) return;
 		listeners.remove(listener);
 	}

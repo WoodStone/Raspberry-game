@@ -1,6 +1,6 @@
 package no.vestein.raspberry.game;
 
-public interface IButtonListener {
+public interface ButtonListener {
 	
 	public void buttonPressed(int x, int y);
 

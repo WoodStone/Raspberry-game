@@ -3,7 +3,7 @@ package no.vestein.raspberry.game;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ButtonController implements IButtonListener {
+public class ButtonController implements ButtonListener {
 
 	private long lastTime = System.currentTimeMillis();	
 	private List<Button> buttons;

@@ -3,7 +3,7 @@ package no.vestein.raspberry.game;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class Renderer implements IBoardListener {
+public class Renderer implements BoardListener {
 	
 	private Board board;
 	

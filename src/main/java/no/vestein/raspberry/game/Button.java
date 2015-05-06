@@ -18,7 +18,7 @@ public class Button {
 	private final int dirx;
 	private final int diry;
 	
-	private List<IButtonListener> listeners = new ArrayList<>();
+	private List<ButtonListener> listeners = new ArrayList<>();
 	
 	public Button(Pin pin, int dirx, int diry) {
 		this.dirx = dirx;
@@ -28,7 +28,7 @@ public class Button {
 		buttonPin.addListener(new GpioPinListenerDigital() {
 			
 			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-				for (IButtonListener listener : listeners) {
+				for (ButtonListener listener : listeners) {
 					listener.buttonPressed(dirx, diry);
 				}
 				
@@ -36,12 +36,12 @@ public class Button {
 		});
 	}
 	
-	public void addListener(IButtonListener listener) {
+	public void addListener(ButtonListener listener) {
 		if (listeners.contains(listener)) return;
 		listeners.add(listener);
 	}
 	
-	public void removeListener(IButtonListener listener) {
+	public void removeListener(ButtonListener listener) {
 		if (!listeners.contains(listener)) return;
 		listeners.remove(listener);
 	}
