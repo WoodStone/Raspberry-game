@@ -42,11 +42,14 @@ public class Board {
 	}
 	
 	public void movePlayer(int dirx, int diry) {
-		if (playerx + dirx < 0 || playerx + dirx >= width || playery + diry < 0 || playery + diry >= height) return;
+		try {
+			map[playery + diry][playerx + dirx] = '$';
+		} catch (ArrayIndexOutOfBoundsException e) {
+			return;
+		}
 		map[playery][playerx] = ' ';
 		playerx += dirx;
 		playery += diry;
-		map[playery][playerx] =  '$';
 		updateListeners();
 	}
 	
