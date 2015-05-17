@@ -26,18 +26,17 @@ public enum Button {
 	
 	private List<ButtonListener> listeners = new ArrayList<>();
 	
-	private Button(Pin pin, int dirx, int diry) {
+	Button(Pin pin, int dirx, int diry) {
 		this.dirx = dirx;
 		this.diry = diry;
 		buttonPin = gpio.provisionDigitalInputPin(pin, PinPullResistance.PULL_DOWN);
 		
 		buttonPin.addListener(new GpioPinListenerDigital() {
-			
+			@Override
 			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
 				for (ButtonListener listener : listeners) {
 					listener.buttonPressed(dirx, diry);
 				}
-				
 			}
 		});
 	}
