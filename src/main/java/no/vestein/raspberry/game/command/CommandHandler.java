@@ -26,7 +26,7 @@ public class CommandHandler {
     public void checkInput(String[] input) {
         List<String> command = Arrays.asList(input);
         for (String name : commandMap.keySet()) {
-            if (command.get(0).equals(name)) {
+            if (command.get(0).toLowerCase().equals(name)) {
                 List<String> args = new ArrayList<>();
                 if (command.size() > 1) {
                     args = command.subList(1, command.size()-1);
