@@ -29,7 +29,7 @@ public class Renderer implements BoardListener {
 		char[] line = new char[board.width + 2];
 		Arrays.fill(line, '-');
 		
-		sBoard += String.valueOf(line);
+		sBoard += String.valueOf(line) + "\n";
 		for (int i = 0; i < board.height; i++) {
 			sBoard += "|";
 			sBoard += String.valueOf(map[i]);

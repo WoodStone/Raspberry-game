@@ -18,19 +18,19 @@ public enum Button {
 	DOWN(RaspiPin.GPIO_02, 0, 1),
 	RIGHT(RaspiPin.GPIO_03, 1, 0),
 	LEFT(RaspiPin.GPIO_04, -1, 0),;
-	
+
 	private final GpioController gpio = GpioFactory.getInstance();
 	private final GpioPinDigitalInput buttonPin;
 	private final int dirx;
-	private final int diry;
-	
-	private List<ButtonListener> listeners = new ArrayList<>();
-	
+    private final int diry;
+
+    private List<ButtonListener> listeners = new ArrayList<>();
+
 	Button(Pin pin, int dirx, int diry) {
 		this.dirx = dirx;
-		this.diry = diry;
+        this.diry = diry;
 		buttonPin = gpio.provisionDigitalInputPin(pin, PinPullResistance.PULL_DOWN);
-		
+
 		buttonPin.addListener(new GpioPinListenerDigital() {
 			@Override
 			public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
