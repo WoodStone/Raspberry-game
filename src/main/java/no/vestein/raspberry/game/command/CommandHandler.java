@@ -29,7 +29,7 @@ public class CommandHandler {
             if (command.get(0).toLowerCase().equals(name)) {
                 List<String> args = new ArrayList<>();
                 if (command.size() > 1) {
-                    args = command.subList(1, command.size()-1);
+                    args = command.subList(1, command.size());
                 }
                 commandMap.get(name).processCommand(args);
                 return;
