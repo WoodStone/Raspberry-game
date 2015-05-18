@@ -41,6 +41,14 @@ public class Board {
         return map;
     }
 
+    public int getPlayerx() {
+        return playerx;
+    }
+
+    public int getPlayery() {
+        return playery;
+    }
+
     public void movePlayer(int dirx, int diry) {
         try {
             map[playery + diry][playerx + dirx] = '$';

@@ -4,6 +4,7 @@ import java.io.Console;
 
 import com.pi4j.io.gpio.GpioFactory;
 import no.vestein.raspberry.game.command.CommandHandler;
+import no.vestein.raspberry.game.command.CommandMove;
 import no.vestein.raspberry.game.command.CommandQuit;
 import no.vestein.raspberry.game.command.CommandRender;
 
@@ -22,6 +23,7 @@ public class Main {
         CommandHandler commandHandler = CommandHandler.getInstance();
         commandHandler.registerCommand(new CommandQuit());
         commandHandler.registerCommand(new CommandRender(renderer));
+        commandHandler.registerCommand(new CommandMove());
 
         board.init();
 

@@ -26,6 +26,9 @@ public class Renderer implements BoardListener {
     private String boardToString(Board board) {
         char[][] map = board.getMap();
         String sBoard = "";
+
+        sBoard += "X: " + board.getPlayerx() + "  Y: " + board.getPlayery() + "\n";
+
         char[] line = new char[board.width + 2];
         Arrays.fill(line, '-');
 
