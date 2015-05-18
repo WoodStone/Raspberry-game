@@ -8,6 +8,7 @@ import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
 import com.pi4j.io.gpio.Pin;
 import com.pi4j.io.gpio.PinPullResistance;
+import com.pi4j.io.gpio.PinState;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
@@ -34,8 +35,10 @@ public enum Button {
         buttonPin.addListener(new GpioPinListenerDigital() {
             @Override
             public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-                for (ButtonListener listener : listeners) {
-                    listener.buttonPressed(dirx, diry);
+                if (event.getState() == PinState.HIGH) {
+                    for (ButtonListener listener : listeners) {
+                        listener.buttonPressed(dirx, diry);
+                    }
                 }
             }
         });
