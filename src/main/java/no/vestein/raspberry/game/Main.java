@@ -9,31 +9,31 @@ import no.vestein.raspberry.game.command.CommandRender;
 
 
 public class Main {
-	
-	public static void main(String[] args) throws InterruptedException {
-		
-		Board board = Board.getInstance();
-		Renderer renderer = new Renderer(board);
-		board.addListener(renderer);
-				
-		ButtonController buttonController = new ButtonController();
-		buttonController.addButtons(Button.values());
+
+    public static void main(String[] args) throws InterruptedException {
+
+        Board board = Board.getInstance();
+        Renderer renderer = new Renderer(board);
+        board.addListener(renderer);
+
+        ButtonController buttonController = new ButtonController();
+        buttonController.addButtons(Button.values());
 
         CommandHandler commandHandler = CommandHandler.getInstance();
         commandHandler.registerCommand(new CommandQuit());
         commandHandler.registerCommand(new CommandRender(renderer));
 
-		board.init();
-		
-		while (true) {
-			Console console = System.console();
-			String[] input = console.readLine().split(" ");
+        board.init();
+
+        while (true) {
+            Console console = System.console();
+            String[] input = console.readLine().split(" ");
 
             commandHandler.checkInput(input);
 //			if (input[0].equals("")) {
 //                break;
 //          }
-		}
+        }
 
 //        shutdown();
     }
