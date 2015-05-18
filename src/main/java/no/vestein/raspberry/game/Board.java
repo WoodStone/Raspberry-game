@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Board {
 
-    private static Board instance = null;
+    private static Board instance = new Board();
 
     public final int height = 30;
     public final int width = 60;
@@ -17,9 +17,6 @@ public class Board {
     private List<BoardListener> listeners = new ArrayList<>();
 
     public static Board getInstance() {
-        if (instance == null) {
-            instance = new Board();
-        }
         return instance;
     }
 

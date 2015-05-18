@@ -32,12 +32,7 @@ public class Main {
             String[] input = console.readLine().split(" ");
 
             commandHandler.checkInput(input);
-//			if (input[0].equals("")) {
-//                break;
-//          }
         }
-
-//        shutdown();
     }
 
     public static void shutdown() {

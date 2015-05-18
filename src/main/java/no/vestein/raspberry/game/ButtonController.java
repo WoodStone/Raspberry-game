@@ -5,7 +5,6 @@ import java.util.List;
 
 public class ButtonController implements ButtonListener {
 
-    private long lastTime = System.currentTimeMillis();
     private List<Button> buttons;
 
     public ButtonController() {
@@ -32,11 +31,7 @@ public class ButtonController implements ButtonListener {
 
     @Override
     public void buttonPressed(int dirx, int diry) {
-        long currentTime = System.currentTimeMillis();
-        if (currentTime - lastTime > 200) {
-            Board.getInstance().movePlayer(dirx, diry);
-            lastTime = System.currentTimeMillis();
-        }
+        Board.getInstance().movePlayer(dirx, diry);
     }
 
 }
