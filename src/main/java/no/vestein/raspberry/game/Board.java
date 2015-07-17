@@ -1,6 +1,7 @@
 package no.vestein.raspberry.game;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Board {
@@ -11,8 +12,8 @@ public class Board {
     public final int width = 60;
 
     private char[][] map;
-    private int playerx = Util.randInt(width);
-    private int playery = Util.randInt(height);
+    private int playerx = Util.randInt(width - 1);
+    private int playery = Util.randInt(height - 1);
 
     private List<BoardListener> listeners = new ArrayList<>();
 
@@ -22,10 +23,8 @@ public class Board {
 
     private Board() {
         map = new char[height][width];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                map[i][j] = ' ';
-            }
+        for (char[] row : map) {
+            Arrays.fill(row, ' ');
         }
         map[playery][playerx] = '$';
     }
